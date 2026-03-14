@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CanvasMarket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="logo">CanvasMarket</span>
+        <p class="tagline">Artist-run gallery & studio shop</p>
+      </div>
+      <nav class="site-nav">
+        <a href="#featured" class="nav-link">Shop</a>
+        <a href="/artworks.html" class="nav-link">Gallery</a>
+        <a href="#visit" class="nav-link">Visit</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="open-cart-btn" class="btn btn-outline" type="button">
+          Cart (<span id="cart-count">0</span>)
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-head">
+          <p class="section-kicker">Upcoming Events</p>
+          <h1 class="section-title">No events at the moment</h1>
+          <p class="section-subtitle">Check back soon or join our mailing list for announcements.</p>
+        </div>
+      </section>
+
+      <section id="featured" class="section">
+        <div class="section-head">
+          <p class="section-kicker">Featured Art</p>
+          <h2 class="section-title">Available Pieces</h2>
+          <p class="section-subtitle">Select a size and add to cart.</p>
+        </div>
+        <div id="catalog" class="catalog-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="section-kicker">Past Exhibitions</p>
+          <h2 class="section-title">Recent Shows</h2>
+        </div>
+        <div class="exhibitions-grid">
+          <article class="exhibit-card">
+            <p class="exhibit-name">Triptych Night</p>
+            <p class="exhibit-meta">Sat, Jul 05 · Oakland</p>
+            <button class="btn btn-text" type="button">Details</button>
+          </article>
+          <article class="exhibit-card">
+            <p class="exhibit-name">Open Studio</p>
+            <p class="exhibit-meta">Sat, Apr 19 · Helvella Art</p>
+            <button class="btn btn-text" type="button">Details</button>
+          </article>
+          <article class="exhibit-card">
+            <p class="exhibit-name">No Squares</p>
+            <p class="exhibit-meta">Sat, Oct 12 · Helvella Art</p>
+            <button class="btn btn-text" type="button">Details</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="visit" class="section visit-section">
+        <div class="visit-card">
+          <div>
+            <p class="section-kicker">Schedule A Visit</p>
+            <h2 class="section-title">Private Gallery Visit (Free)</h2>
+            <p class="section-subtitle">Book a one hour visit to view the work in person.</p>
+          </div>
+          <button class="btn" type="button">Book Now</button>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="section-head">
+          <p class="section-kicker">Join Our Mailing List</p>
+          <h2 class="section-title">Stay In The Loop</h2>
+        </div>
+        <form class="mailing-form">
+          <input type="email" placeholder="Email" aria-label="Email" />
+          <button class="btn" type="button">Subscribe</button>
+        </form>
+      </section>
+
+      <section class="section admin-panel">
+        <div class="section-head">
+          <p class="section-kicker">Admin</p>
+          <h2 class="section-title">Inventory Controls</h2>
+          <p id="admin-status" class="section-subtitle">Not signed in.</p>
+        </div>
+
+        <form id="admin-login-form" class="admin-auth-form">
+          <label>
+            Admin Email
+            <input type="email" id="admin-email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="admin-password" required />
+          </label>
+          <button class="btn" id="admin-sign-in-btn" type="submit">Sign In</button>
+          <button class="btn btn-text" id="admin-logout-btn" type="button" hidden>Sign Out</button>
+        </form>
+
+        <div id="admin-only-area" class="admin-only locked">
+          <h3 class="section-title">Add New Art Piece</h3>
+          <p id="admin-notice" class="section-subtitle">
+            Sign in with an admin account to enable artwork creation.
+          </p>
+          <form id="art-form" class="art-form">
+            <label>
+              Title
+              <input type="text" id="title" required />
+            </label>
+            <label>
+              Image URL (optional)
+              <input type="url" id="imageUrl" placeholder="https://..." />
+            </label>
+            <div class="image-input-group full-row">
+              <p class="image-input-label">Or drag and drop an image</p>
+              <div id="image-drop-zone" class="image-drop-zone" tabindex="0">
+                <p>Drop image here</p>
+                <p class="image-drop-sub">or</p>
+                <button id="image-browse-btn" class="btn btn-outline" type="button">Choose File</button>
+                <input id="imageFile" type="file" accept="image/*" hidden />
+              </div>
+              <p id="image-file-name" class="image-file-name">No image file selected.</p>
+            </div>
+            <label>
+              Base Price (USD)
+              <input type="number" id="basePrice" min="1" step="0.01" required />
+            </label>
+            <label class="full-row">
+              Description
+              <textarea id="description" rows="2" maxlength="180"></textarea>
+            </label>
+            <button class="btn" type="submit">Add Piece</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>CanvasMarket · 850 42nd Ave, Oakland CA · 510.426.5060 · hello@canvasmarket.example</p>
+    </footer>
+
+    <dialog id="cart-dialog" class="modal">
+      <div class="modal-content">
+        <div class="modal-head">
+          <h3>Your Cart</h3>
+          <button class="btn btn-text" id="close-cart-btn" type="button">Close</button>
+        </div>
+
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="cart-total">$0.00</strong>
+        </div>
+
+        <form id="checkout-form" class="checkout-form">
+          <h4>Checkout Details</h4>
+          <label>
+            Full Name
+            <input type="text" id="buyerName" required />
+          </label>
+          <label>
+            Email
+            <input type="email" id="buyerEmail" required />
+          </label>
+          <label>
+            Shipping Address
+            <textarea id="shippingAddress" rows="2" required></textarea>
+          </label>
+          <button class="btn" type="submit">Place Order</button>
+        </form>
+
+        <p class="checkout-note">Orders are submitted directly to PocketBase.</p>
+      </div>
+    </dialog>
+
+    <dialog id="success-dialog" class="modal small">
+      <div class="modal-content">
+        <h3>Order Submitted</h3>
+        <p id="order-message"></p>
+        <button class="btn" id="close-success-btn" type="button">Done</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

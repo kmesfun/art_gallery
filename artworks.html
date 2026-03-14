@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CanvasMarket Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="logo">CanvasMarket</span>
+        <p class="tagline">Public gallery</p>
+      </div>
+      <nav class="site-nav">
+        <button id="refresh-btn" class="btn btn-outline icon-btn" type="button" aria-label="Refresh gallery" title="Refresh">
+          &#8635;
+        </button>
+        <a class="btn btn-outline icon-btn" href="/index.html" aria-label="Back to store" title="Back to store">
+          &#127980;
+        </a>
+        <button id="open-cart-btn" class="btn btn-outline" type="button">
+          Cart (<span id="cart-count">0</span>)
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-head">
+          <p class="section-kicker">Gallery</p>
+          <h1 class="section-title">Available Artworks</h1>
+          <p id="gallery-status" class="section-subtitle">Loading artworks...</p>
+        </div>
+        <div id="gallery-catalog" class="catalog-grid"></div>
+      </section>
+    </main>
+
+    <dialog id="cart-dialog" class="modal">
+      <div class="modal-content">
+        <div class="modal-head">
+          <h3>Your Cart</h3>
+          <button class="btn btn-text" id="close-cart-btn" type="button">Close</button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="cart-total">$0.00</strong>
+        </div>
+        <form id="checkout-form" class="checkout-form">
+          <h4>Checkout Details</h4>
+          <label>
+            Full Name
+            <input type="text" id="buyerName" required />
+          </label>
+          <label>
+            Email
+            <input type="email" id="buyerEmail" required />
+          </label>
+          <label>
+            Shipping Address
+            <textarea id="shippingAddress" rows="2" required></textarea>
+          </label>
+          <button class="btn" type="submit">Place Order</button>
+        </form>
+        <p class="checkout-note">Orders are submitted directly to PocketBase.</p>
+      </div>
+    </dialog>
+
+    <dialog id="success-dialog" class="modal small">
+      <div class="modal-content">
+        <h3>Order Submitted</h3>
+        <p id="order-message"></p>
+        <button class="btn" id="close-success-btn" type="button">Done</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/artworks.ts"></script>
+  </body>
+</html>
